@@ -2,14 +2,6 @@ import { DataTypes } from 'sequelize';
 import sequelize from './sequelize.js';
 
 const AuthOtp = sequelize.define('AuthOtp', {
-  storeId: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    references: {
-        model: 'stores',
-        key: 'id',
-    },
-  },
   otp: {
     type: DataTypes.STRING,
     allowNull: false

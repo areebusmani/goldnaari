@@ -2,14 +2,6 @@ import { DataTypes } from 'sequelize';
 import sequelize from './sequelize.js';
 
 const AuthToken = sequelize.define('AuthToken', {
-  storeId: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    references: {
-        model: 'stores',
-        key: 'id',
-    },
-  },
   token: {
     type: DataTypes.STRING,
     allowNull: false

@@ -1,13 +1,10 @@
-const sequelize = require('../api/models/sequelize').default;
-const Store = require('../api/models/store').default;
-const Plan = require('../api/models/plan').default;
-const Collection = require('../api/models/collection').default;
-const path = require('path');
+import sequelize from '../api/models/sequelize.js';
+import {Store} from '../api/models/index.js';
 
 // Create mock data
 const createMockData = async () => {
     try {
-      await sequelize.sync({ force: true }); // Drop and recreate the tables
+      await sequelize.sync();
   
       // Create a store
       const store = await Store.create({
@@ -22,22 +19,22 @@ const createMockData = async () => {
         const planDate = new Date();
         planDate.setDate(planDate.getDate() - Math.floor(Math.random() * 3) + 10);
 
-        const plan = await Plan.create({
+        const plan = await store.createPlan({
           customerName: `Customer ${i}`,
           customerPhoneNumber: `987654321${i%10}`,
+          installmentAmount: 15000,
           installmentFrequency: 'monthly',
           totalInstallments: 11,
           startedAt: planDate,
           status: 'active',
-          storeId: store.id,
         });
 
-        await Collection.create({
+        const collection = await plan.createCollection({
           datetime: planDate,
-          amount: 1000,
-          storeId: store.id,
-          planId: plan.id
+          amount: 15000,
         });
+
+        await collection.setStore(store);
       }
   
       console.log('Mock data created successfully.');
