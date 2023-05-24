@@ -1,13 +1,13 @@
-const express = require('express');
+import { Router } from 'express';
+import authenticate from './authenticate.js';
+import getStoreHandler from './handlers/getStore.js';
 
-const router = express.Router()
+const router = Router()
 
-router.get('/register', (req, res) => {
-    res.send('Registered');
-});
+router.get('/store', authenticate, getStoreHandler);
 
 router.get('*', (req, res) => {
     res.send('Unkown route');
 });
 
-module.exports = router;
+export default router;

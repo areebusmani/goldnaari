@@ -1,21 +1,26 @@
 
-const express = require('express');
-const http = require('http');
-const path = require('path');
-const bodyParser = require('body-parser');
-const logger = require('morgan');
-const methodOverride = require('method-override');
-const api = require('./api');
-require('dotenv').config();
+import 'dotenv/config'
+
+import express from 'express';
+import { createServer } from 'http';
+import path from 'path';
+import parser from 'body-parser';
+import logger from 'morgan';
+import methodOverride from 'method-override';
+import apiRouter from './api/index.js';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 app.set('port', process.env.PORT || 3000);
 app.use(logger('dev'));
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(parser.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'landing')));
 app.use('/dashboard', express.static(path.join(__dirname, 'dashboard/build')));
-app.use('/api', api);
+app.use('/api', apiRouter);
 
 if (app.get('env') == 'development') {
   app.locals.pretty = true;
@@ -23,10 +28,10 @@ if (app.get('env') == 'development') {
 
 // The "catchall" handler: for any request that doesn't
 // match one above, send back React's index.html file.
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname+'/dashboard/build/index.html'));
+app.get('*', (_, response) => {
+  response.sendFile(path.join(__dirname+'/dashboard/build/index.html'));
 });
 
-http.createServer(app).listen(app.get('port'), function(){
+createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
 });

@@ -1,5 +1,5 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('./sequelize');
+import { DataTypes } from 'sequelize';
+import sequelize from './sequelize.js';
 
 const AuthOtp = sequelize.define('AuthOtp', {
   storeId: {
@@ -25,4 +25,4 @@ const AuthOtp = sequelize.define('AuthOtp', {
   }
 }, {tableName: 'auth_token'});
 
-module.exports = AuthOtp;
+export default AuthOtp;

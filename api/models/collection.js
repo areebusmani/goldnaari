@@ -1,5 +1,5 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('./sequelize');
+import { DataTypes } from 'sequelize';
+import sequelize from './sequelize.js';
 
 const Collection = sequelize.define('Collection', {
   storeId: {
@@ -28,4 +28,4 @@ const Collection = sequelize.define('Collection', {
   }
 }, {tableName: 'collections'});
 
-module.exports = Collection;
+export default Collection;

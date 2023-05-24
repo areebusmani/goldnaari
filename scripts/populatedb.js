@@ -1,7 +1,7 @@
-const sequelize = require('../api/models/sequelize');
-const Store = require('../api/models/store');
-const Plan = require('../api/models/plan');
-const Collection = require('../api/models/collection');
+const sequelize = require('../api/models/sequelize').default;
+const Store = require('../api/models/store').default;
+const Plan = require('../api/models/plan').default;
+const Collection = require('../api/models/collection').default;
 const path = require('path');
 
 // Create mock data
