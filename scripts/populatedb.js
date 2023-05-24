@@ -30,7 +30,6 @@ const createMockData = async () => {
         });
 
         const collection = await plan.createCollection({
-          datetime: planDate,
           amount: 15000,
         });
 

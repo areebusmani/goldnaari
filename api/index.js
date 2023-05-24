@@ -1,14 +1,18 @@
 import { Router } from 'express';
-import authenticate from './authenticate.js';
-import getStoreHandler from './handlers/getStore.js';
-import getPlansHandler from './handlers/getPlans.js';
-import getCollectionsHandler from './handlers/getCollections.js';
-
+import authenticate from './handlers/authenticate.js';
+import getStore from './handlers/getStore.js';
+import getPlans from './handlers/getPlans.js';
+import getCollections from './handlers/getCollections.js';
+import createStore from './handlers/createStore.js';
+import createPlan from './handlers/createPlan.js';
 const router = Router()
 
-router.get('/store', authenticate, getStoreHandler);
-router.get('/plans', authenticate, getPlansHandler);
-router.get('/collections', authenticate, getCollectionsHandler);
+router.get('/store', authenticate, getStore);
+router.get('/plans', authenticate, getPlans);
+router.get('/collections', authenticate, getCollections);
+
+router.post('/store', createStore);
+router.post('/plans', authenticate, createPlan);
 
 router.get('*', (req, res) => {
     res.send('Unkwown route');
