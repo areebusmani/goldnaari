@@ -2,13 +2,14 @@
   "name": "goldnaari",
   "version": "5.0.0",
   "dependencies": {
-    "express": "*",
-    "pug": "*",
-    "stylus": "*",
-    "serve-favicon": "*",
-    "morgan": "*",
     "body-parser": "*",
-    "method-override": "*"
+    "dotenv": "^16.0.3",
+    "express": "*",
+    "method-override": "*",
+    "morgan": "*",
+    "pug": "*",
+    "serve-favicon": "*",
+    "stylus": "*"
   },
   "engines": {
     "node": "*",
