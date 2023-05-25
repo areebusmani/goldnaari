@@ -3,7 +3,7 @@ import {Store} from '../models/index.js';
 const createPlan = async (request, response) => {
     const storeId = request.storeId;
     const store = await Store.findByPk(storeId);
-    const currentTime = new Date().toISOString();
+    const currentTime = new Date();
     const plan = await store.createPlan({
         customerName: request.body.customerName,
         customerPhoneNumber: request.body.customerName,
