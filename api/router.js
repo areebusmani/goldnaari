@@ -15,7 +15,7 @@ router.post('/store', createStore);
 router.post('/plans', authenticate, createPlan);
 
 router.get('*', (req, res) => {
-    res.send('Unkwown route');
+    res.sendStatus(404);
 });
 
 export default router;

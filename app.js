@@ -7,7 +7,7 @@ import path from 'path';
 import parser from 'body-parser';
 import logger from 'morgan';
 import methodOverride from 'method-override';
-import apiRouter from './api/index.js';
+import apiRouter from './api/router.js';
 import { fileURLToPath } from 'url';
 // import './scripts/populatedb.js';
 
