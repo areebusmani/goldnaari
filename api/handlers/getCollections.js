@@ -12,7 +12,10 @@ const getCollections = async (request, response) => {
         offset,
         include: [Plan]
     });
-    const responseData = {data: collections.rows.map(formatCollectionRow), count: collections.count};
+    const responseData = {
+        data: collections.rows.map(formatCollectionRow),
+        count: collections.count
+    };
     response.json(responseData);
 }
 

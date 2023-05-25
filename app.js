@@ -29,10 +29,10 @@ if (app.get('env') == 'development') {
 
 // The "catchall" handler: for any request that doesn't
 // match one above, send back React's index.html file.
-app.get('*', (_, response) => {
-  response.sendFile(path.join(__dirname+'/dashboard/build/index.html'));
+app.get('*', (request, response) => {
+  response.sendFile(path.join(__dirname, 'dashboard/build/index.html'));
 });
 
-createServer(app).listen(app.get('port'), function(){
+createServer(app).listen(app.get('port'), () => {
   console.log("Express server listening on port " + app.get('port'));
 });
