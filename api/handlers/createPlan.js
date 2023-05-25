@@ -6,7 +6,8 @@ const createPlan = async (request, response) => {
     const currentTime = new Date();
     const plan = await store.createPlan({
         customerName: request.body.customerName,
-        customerPhoneNumber: request.body.customerName,
+        customerPhoneNumber: request.body.customerPhoneNumber,
+        installmentAmount: request.body.installmentAmount,
         installmentFrequency: 'monthly',
         totalInstallments: 11,
         startedAt: currentTime,
@@ -14,7 +15,7 @@ const createPlan = async (request, response) => {
       });
     const collection = await plan.createCollection({
         datetime: currentTime,
-        amount: 15000,
+        amount: request.body.installmentAmount,
     });
     await collection.setStore(store);
     response.json({status: 'SUCCESS'});
