@@ -23,6 +23,7 @@ const formatCollectionRow = (collection) => {
     collection.StoreId = undefined;
     collection.PlanId = undefined;
     collection.Plan.StoreId = undefined;
+    collection.amount = Number(collection.amount);
     return collection;
 }
 

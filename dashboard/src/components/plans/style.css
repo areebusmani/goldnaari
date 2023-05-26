@@ -1,0 +1,5 @@
+.all-plans-table {
+    max-width: 100%;
+    width: 900px;
+    overflow-x: auto;
+}

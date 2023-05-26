@@ -4,6 +4,7 @@
   "version": "5.0.0",
   "dependencies": {
     "body-parser": "*",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "*",
     "method-override": "*",
