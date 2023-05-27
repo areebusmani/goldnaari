@@ -8,3 +8,8 @@
 .stat-link {
     text-decoration: none !important;
 }
+.loader {
+    justify-content: center;
+    display: flex;
+    margin-top: 24px;
+}

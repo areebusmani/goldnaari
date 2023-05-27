@@ -30,7 +30,7 @@ const Home = () => {
     };
 
     if (loading || !storeData) {
-        return <Spin />;
+        return <Spin className="loader" />;
     }
     return (
         <>
@@ -52,8 +52,8 @@ const Home = () => {
                             <Statistic title="Total Collections"
                                 value={formatCurrency(storeData.totalCollections)} precision={2} />
                         </Link>
-                        <Button className="card-action first">
-                            View pending collections
+                        <Button className="card-action first" disabled>
+                            View pending collections (0)
                         </Button>
                     </Card>
                 </Col>
