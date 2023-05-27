@@ -1,22 +1,18 @@
 import React, {useEffect, useState} from "react";
 import {Table} from 'antd';
-import { formatCurrency } from '../utils/currency';
-import { formatDate } from '../utils/date';
+import CustomerSnippet from '../common/customersnippet';
+import { formatCurrency } from '../../utils/currency';
+import { formatDate } from '../../utils/date';
 import axios from 'axios';
 import './style.css';
 
 const columns = [
     {
-        title: 'Name',
-        dataIndex: 'customerName',
-        key: 'name',
-        fixed: 'left'
-    },
-    {
-     title: 'Phone',
-     dataIndex: 'customerPhoneNumber',
-     key: 'phone',
-     render: (number) => <a href={`tel:${number}`}>{number}</a>
+        title: 'Customer',
+        dataIndex: 'customer',
+        key: 'customer',
+        fixed: 'left',
+        render: (_, row) => <CustomerSnippet plan={row} />
     },
     {
      title: 'Installment amount',

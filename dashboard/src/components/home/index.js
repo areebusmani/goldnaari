@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Card, Col, Row, Button, Statistic, Spin } from 'antd';
 import {Link} from 'react-router-dom';
-import { formatCurrency } from '../utils/currency';
+import { formatCurrency } from '../../utils/currency';
 import axios from 'axios';
 
 import './style.css';
