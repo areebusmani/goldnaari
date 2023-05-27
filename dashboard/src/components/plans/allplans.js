@@ -32,8 +32,8 @@ const AllPlans = () => {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
     useEffect(() => {
-        setLoading(true);
         const fetchData = async () => {
+            setLoading(true);
             try {
                 const response = await axios.get('/api/plans');
                 setData(response.data.data);

@@ -11,8 +11,8 @@ const Home = () => {
     const [storeData, setStoreData] = useState();
     useEffect(() => {
         const fetchData = async () => {
+            setLoading(true);
             try {
-                setLoading(true);
                 const response = await axios.get('/api/store');
                 setStoreData(response.data);
             } finally {
