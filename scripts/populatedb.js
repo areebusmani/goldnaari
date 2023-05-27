@@ -17,7 +17,6 @@ const createMockData = async () => {
         // Create 10 plans for the store
         for (let i = 1; i <= 10; i++) {
             const planDate = new Date();
-            planDate.setDate(planDate.getDate() - Math.floor(Math.random() * 3) + 10);
 
             const plan = await store.createPlan({
                 customerName: `Customer ${i}`,
