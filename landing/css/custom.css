@@ -136,12 +136,12 @@ button {
     padding: 3px 0;
 }
 
-#contact form {
+#contact .form {
     color: #00FFAD;
 }
 
-#contact form input,
-#contact form textarea {
+#contact .form input,
+#contact .form textarea {
     background: transparent;
     border: 1px solid #00FFAD;
     color: #ffffff;
@@ -181,3 +181,69 @@ button {
         font-size: 3.6rem;
     }
 }
+
+#alert-container {
+    z-index: 1;
+}
+
+.alert-msg {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    bottom: 25px;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.1);
+    left: 25px;
+    padding: 15px;
+    position: fixed;
+    z-index: 99;
+ }
+
+ .alert-msg.error:before {
+    color: #d63f3f;
+    content: "\26A0";
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-right: 10px;
+    vertical-align: sub;
+ }
+ 
+ .alert-msg.success:before {
+    color: #4BB543;
+    content: "\1F389";
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-right: 10px;
+    vertical-align: sub;
+ }
+ 
+ .slide-in {
+       animation-name: slideIn;
+       animation-duration: 0.8s;
+ }
+ 
+ @keyframes slideIn {
+    from {
+       transform: translateX(-400px);
+    }
+    
+    to {
+       transform: translateX(0);
+    }
+ }
+ 
+ .slide-out {
+       animation-name: slideOut;
+       animation-duration: 0.8s;
+ }
+ 
+ @keyframes slideOut {
+    from {
+       transform: translateY(0);
+       opacity: 1;
+    }
+    
+    to {
+       transform: translateY(80px);
+       opacity: 0;
+    }
+ }

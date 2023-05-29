@@ -1,8 +1,6 @@
 import {Store} from '../models/index.js';
 
 const createPlan = async (request, response) => {
-    console.log("REQ BODY");
-    console.log(request.body);
     const storeId = request.storeId;
     const store = await Store.findByPk(storeId);
     const currentTime = new Date();
