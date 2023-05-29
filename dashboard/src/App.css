@@ -3,5 +3,5 @@ main > .container {
 }
 
 main > .container > h1 {
-    margin: 15px 0;
+    margin: 24px 0 32px;
 }
