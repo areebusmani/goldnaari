@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
-import {Table} from 'antd';
+import {Table, Button} from 'antd';
 import CustomerSnippet from '../common/customersnippet';
+import CreatePlan from "../createplan";
 import { formatCurrency } from '../../utils/currency';
 import { formatDate } from '../../utils/date';
 import axios from 'axios';
@@ -31,25 +32,54 @@ const columns = [
 const AllPlans = () => {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [createPlanLaunched, setCreatePlanLaunched] = useState(false);
+
+    const launchCreatePlan = () => {
+        setCreatePlanLaunched(true);
+    };
+
+    const onPlanCreated = () => {
+        setCreatePlanLaunched(false);
+        fetchData();
+    };
+
+    const onCreatePlanCancel = () => {
+        setCreatePlanLaunched(false);
+    };
+
+    const fetchData = async () => {
+        setLoading(true);
+        try {
+            const response = await axios.get('/api/plans');
+            setData(response.data.data);
+        } finally {
+            setLoading(false);
+        }
+    };
+
     useEffect(() => {
-        const fetchData = async () => {
-            setLoading(true);
-            try {
-                const response = await axios.get('/api/plans');
-                setData(response.data.data);
-            } finally {
-                setLoading(false);
-            }
-        };
+        
         fetchData();
     }, []);
 
-    return <Table
+    return (
+        <>
+            <Button className="all-plans-action" type="primary" onClick={launchCreatePlan}>
+                Start a new plan
+            </Button>
+            <Table
                 className="all-plans-table"
                 loading={loading}
                 columns={columns}
                 dataSource={data}
-            />;
+            />
+            <CreatePlan
+                launched={createPlanLaunched}
+                onPlanCreated={onPlanCreated}
+                onCancel={onCreatePlanCancel}
+            />
+        </>
+    );
 }
 
 export default AllPlans;

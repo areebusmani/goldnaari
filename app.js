@@ -9,15 +9,18 @@ import logger from 'morgan';
 import methodOverride from 'method-override';
 import apiRouter from './api/router.js';
 import { fileURLToPath } from 'url';
+// import cors from 'cors';
 // import './scripts/populatedb.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
+// app.use(cors({origin: '*'}))
 app.set('port', process.env.PORT || 3000);
 app.use(logger('dev'));
 app.use(parser.urlencoded({ extended: false }));
+app.use(parser.json());
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'landing')));
 app.use('/dashboard', express.static(path.join(__dirname, 'dashboard/build')));

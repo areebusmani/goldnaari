@@ -1,24 +1,40 @@
 import React, { useState, useEffect } from 'react';
 import { Card, Col, Row, Button, Statistic, Spin } from 'antd';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { formatCurrency } from '../../utils/currency';
 import axios from 'axios';
-
+import CreatePlan from '../createplan';
 import './style.css';
 
 const Home = () => {
     const [loading, setLoading] = useState(false);
     const [storeData, setStoreData] = useState();
+    const [createPlanLaunched, setCreatePlanLaunched] = useState(false);
+
+    const fetchData = async () => {
+        setLoading(true);
+        try {
+            const response = await axios.get('/api/store');
+            setStoreData(response.data);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const launchCreatePlan = () => {
+        setCreatePlanLaunched(true);
+    };
+
+    const onPlanCreated = () => {
+        setCreatePlanLaunched(false);
+        fetchData();
+    };
+
+    const onCreatePlanCancel = () => {
+        setCreatePlanLaunched(false);
+    };
+
     useEffect(() => {
-        const fetchData = async () => {
-            setLoading(true);
-            try {
-                const response = await axios.get('/api/store');
-                setStoreData(response.data);
-            } finally {
-                setLoading(false);
-            }
-        };
         fetchData();
     }, []);
 
@@ -41,7 +57,7 @@ const Home = () => {
                         <Link to="/plans" className="stat-link">
                             <Statistic title="Total Plans" value={storeData.totalPlans} />
                         </Link>
-                        <Button className="card-action first" type="primary">
+                        <Button className="card-action first" type="primary" onClick={launchCreatePlan}>
                             Start a new plan
                         </Button>
                     </Card>
@@ -57,6 +73,11 @@ const Home = () => {
                         </Button>
                     </Card>
                 </Col>
+                <CreatePlan
+                    launched={createPlanLaunched}
+                    onPlanCreated={onPlanCreated}
+                    onCancel={onCreatePlanCancel}
+                />
             </Row>
         </>);
 }
