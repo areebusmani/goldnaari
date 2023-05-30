@@ -14,7 +14,7 @@ import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
+const cacheTime = 31536000; // 1 year
 const app = express();
 // app.use(cors({origin: '*'}))
 app.set('port', process.env.PORT || 3000);
@@ -22,8 +22,12 @@ app.use(logger('dev'));
 app.use(parser.urlencoded({ extended: false }));
 app.use(parser.json());
 app.use(methodOverride('_method'));
-app.use(express.static(path.join(__dirname, 'landing')));
-app.use('/dashboard', express.static(path.join(__dirname, 'dashboard/build')));
+app.use(express.static(path.join(__dirname, 'landing'), {
+    maxAge: cacheTime
+}));
+app.use('/dashboard', express.static(path.join(__dirname, 'dashboard/build'), {
+    maxAge: cacheTime
+}));
 app.use('/api', apiRouter);
 
 if (app.get('env') == 'development') {
