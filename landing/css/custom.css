@@ -3,20 +3,25 @@ h2 {
     font-size: 2.8rem !important;
     font-weight: 700;
 }
+
 .container .subtitle {
     margin-bottom: 48px !important;
 }
+
 img {
     display: block;
     max-width: 100%;
 }
+
 .attribute {
     margin-bottom: 24px;
 }
-.attribute > img {
-    height:80px;
-    margin-bottom:8px;
+
+.attribute>img {
+    height: 80px;
+    margin-bottom: 8px;
 }
+
 a,
 button {
     cursor: pointer;
@@ -60,7 +65,7 @@ button {
 }
 
 .btn.cta-transparent:hover {
-    background: rgba(255,255,255,0.2);
+    background: rgba(255, 255, 255, 0.2);
     color: #fff;
 }
 
@@ -191,59 +196,59 @@ button {
     border: 1px solid #ddd;
     border-radius: 2px;
     bottom: 25px;
-    box-shadow: 5px 5px 10px rgba(0,0,0,0.1);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
     left: 25px;
     padding: 15px;
     position: fixed;
     z-index: 99;
- }
+}
 
- .alert-msg.error:before {
+.alert-msg.error:before {
     color: #d63f3f;
     content: "\26A0";
     font-size: 1.5em;
     font-weight: 600;
     margin-right: 10px;
     vertical-align: sub;
- }
- 
- .alert-msg.success:before {
+}
+
+.alert-msg.success:before {
     color: #4BB543;
     content: "\1F389";
     font-size: 1.5em;
     font-weight: 600;
     margin-right: 10px;
     vertical-align: sub;
- }
- 
- .slide-in {
-       animation-name: slideIn;
-       animation-duration: 0.8s;
- }
- 
- @keyframes slideIn {
+}
+
+.slide-in {
+    animation-name: slideIn;
+    animation-duration: 0.8s;
+}
+
+@keyframes slideIn {
     from {
-       transform: translateX(-400px);
+        transform: translateX(-400px);
     }
-    
+
     to {
-       transform: translateX(0);
+        transform: translateX(0);
     }
- }
- 
- .slide-out {
-       animation-name: slideOut;
-       animation-duration: 0.8s;
- }
- 
- @keyframes slideOut {
+}
+
+.slide-out {
+    animation-name: slideOut;
+    animation-duration: 0.8s;
+}
+
+@keyframes slideOut {
     from {
-       transform: translateY(0);
-       opacity: 1;
+        transform: translateY(0);
+        opacity: 1;
     }
-    
+
     to {
-       transform: translateY(80px);
-       opacity: 0;
+        transform: translateY(80px);
+        opacity: 0;
     }
- }
+}

@@ -1,7 +1,7 @@
-main > .container {
+main>.container {
     padding: 60px 24px 0;
 }
 
-main > .container > h1 {
+main>.container>h1 {
     margin: 24px 0 32px;
 }

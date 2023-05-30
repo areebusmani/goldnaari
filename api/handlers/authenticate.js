@@ -10,7 +10,6 @@ const authenticate = (request, response, next) => {
     }
     try {
         const {storeId} = jwt.verify(token, process.env.JWT_SECRET_KEY);
-        console.log('Store id',storeId);
         request.storeId = storeId;
         next();
     } catch (error) {
