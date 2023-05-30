@@ -51,6 +51,9 @@ function submitForm() {
       alertHandler('Please enter your phone number', 'error');
       return;
    }
+   if (!/^\d{10}$/.test(phoneNumber)) {
+      return alertHandler('Mobile number should be a 10-digit number', 'error');
+   }
    if (!businessName) {
       alertHandler('Please enter business name', 'error');
       return;
