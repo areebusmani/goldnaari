@@ -6,7 +6,7 @@ import axios from 'axios';
 
 const infoText = `By creating a new plan you acknowledge that you have
     accepted the first installment amount from the customer
-    and issued a receipt.`;
+    and issued a receipt`;
 
 const CreatePlan = ({ launched, onPlanCreated, onCancel }) => {
     const [confirmLoading, setConfirmLoading] = useState(false);

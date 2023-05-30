@@ -1,5 +1,7 @@
 import { Router } from 'express';
 import authenticate from './handlers/authenticate.js';
+import generateOtp from './handlers/generateOtp.js';
+import validateOtp from './handlers/validateOtp.js';
 import getStore from './handlers/getStore.js';
 import getPlans from './handlers/getPlans.js';
 import getCollections from './handlers/getCollections.js';
@@ -11,6 +13,9 @@ const router = Router()
 router.get('/store', authenticate, getStore);
 router.get('/plans', authenticate, getPlans);
 router.get('/collections', authenticate, getCollections);
+
+router.get('/generate-otp', generateOtp);
+router.get('/validate-otp', validateOtp);
 
 router.post('/store', createStore);
 router.post('/plans', authenticate, createPlan);

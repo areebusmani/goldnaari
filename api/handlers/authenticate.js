@@ -1,12 +1,23 @@
-const authenticate = (req, res, next) => {
-    const authHeader = req.headers['authorization'];
-    const token = authHeader && authHeader.split(' ')[1]; // Bearer <token>
+import jwt from 'jsonwebtoken';
 
+const authenticate = (request, response, next) => {
+    const authHeader = request.headers['authorization'];
+    const token = authHeader && authHeader.split(' ')[1]; // Bearer <token>
+    console.log('Token',token);
     if (!token) {
-        // return res.sendStatus(401);
+        response.sendStatus(401);
+        return;
     }
-    req.storeId = 1;
-    next();
+    try {
+        const {storeId} = jwt.verify(token, process.env.JWT_SECRET_KEY);
+        console.log('Store id',storeId);
+        request.storeId = storeId;
+        next();
+    } catch (error) {
+        console.error(error);
+        response.sendStatus(401);
+    }
+    
 }
 
 export default authenticate;

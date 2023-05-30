@@ -6,7 +6,11 @@ const getStore = async (request, response) => {
         const store = await Store.findByPk(storeId);
         const totalPlans = await Plan.count({where: {storeId, status: 'active'}});
         const totalCollections = await Collection.sum('amount', {where: {storeId}});
-        const responseData = {totalPlans, totalCollections, ...store.dataValues};
+        const responseData = {
+            totalPlans: Number(totalPlans),
+            totalCollections: Number(totalCollections),
+            ...store.dataValues
+        };
         response.json(responseData);
     } catch (error) {
         console.error(error);
