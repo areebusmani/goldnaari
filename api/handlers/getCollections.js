@@ -2,14 +2,10 @@ import {Plan, Collection} from '../models/index.js';
 
 const getCollections = async (request, response) => {
     const storeId = request.storeId;
-    const offset = parseInt(request.query.offset) || 0;
-    const limit = parseInt(request.query.limit) || 20;
 
     const collections = await Collection.findAndCountAll({
         where: {storeId},
         order: [['createdAt', 'DESC']],
-        limit,
-        offset,
         include: [Plan]
     });
     const responseData = {
