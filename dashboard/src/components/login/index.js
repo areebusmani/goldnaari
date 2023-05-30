@@ -134,7 +134,7 @@ const validateCustomerPhone = (value) => {
 
 const validateOTP = (value) => {
     if (!/^\d{6}$/.test(value)) {
-        return 'Customer phone number should be a 4-digit number';
+        return 'OTP should be a 6-digit number';
     }
     return true;
 }
