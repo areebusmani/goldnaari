@@ -3,12 +3,17 @@ import {Plan} from '../models/index.js';
 const getPlans = async (request, response) => {
     const storeId = request.storeId;
 
-    const plans = await Plan.findAndCountAll({
-        where: {storeId, status: 'active'},
-        order: [['createdAt', 'DESC']]
-    });
-    const responseData = {data: plans.rows.map(formatPlanRow), count: plans.count};
-    response.json(responseData);
+    try {
+        const plans = await Plan.findAndCountAll({
+            where: {storeId, status: 'active'},
+            order: [['createdAt', 'DESC']]
+        });
+        const responseData = {data: plans.rows.map(formatPlanRow), count: plans.count};
+        response.json(responseData);
+    }  catch (error) {
+        console.error(error);
+        response.sendStatus(500);
+    }
 }
 
 const formatPlanRow = (plan) => {

@@ -17,8 +17,13 @@ const createPlan = async (request, response) => {
         datetime: currentTime,
         amount: request.body.installmentAmount,
     });
-    await collection.setStore(store);
-    response.json({status: 'SUCCESS'});
+    try {
+        await collection.setStore(store);
+        response.json({});
+    } catch (error) {
+        console.error(error);
+        response.sendStatus(500);
+    }
 }
 
 export default createPlan;
