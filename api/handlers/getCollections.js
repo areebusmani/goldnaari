@@ -1,7 +1,7 @@
 import {Plan, Collection} from '../models/index.js';
 
 const getCollections = async (request, response) => {
-    const storeId = request.storeId;
+    const {storeId} = request;
 
     try {
         const collections = await Collection.findAndCountAll({

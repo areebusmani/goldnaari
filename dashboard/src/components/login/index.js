@@ -77,7 +77,6 @@ const EnterOtp = ({onLogin, phone}) => {
         try {
             const response = await axios.get(`/api/validate-otp?phone=${phone}&otp=${otp}`);
             const {success, authToken} = response.data;
-            console.log("Auth Token");
             if (!success || !authToken) {
                 setFailure(true);
             } else {

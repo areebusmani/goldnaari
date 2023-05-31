@@ -12,13 +12,12 @@ import { getAuthToken, setAuthHeaders } from './utils/auth';
 
 import './App.css';
 
-const isLoggedIn = getAuthToken();
+const isLoggedIn = !!getAuthToken();
 if (isLoggedIn) {
     setAuthHeaders();
 }
 
 const App = () => {
-    console.log('Auth token', getAuthToken());
     const [loggedIn, setLoggedIn] = useState(isLoggedIn);
     const handleLogin = () => {
         setLoggedIn(true);

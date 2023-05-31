@@ -8,7 +8,7 @@ const createStore = async (request, response) => {
             phoneNumber: request.body.phoneNumber,
             status: 'active'
         });
-        response.json({});
+        response.json();
     } catch (error) {
         console.error(error);
         response.sendStatus(500);

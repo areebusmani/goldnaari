@@ -1,13 +1,14 @@
 import {Store} from '../models/index.js';
 
 const createPlan = async (request, response) => {
-    const storeId = request.storeId;
+    const {storeId} = request;
     const store = await Store.findByPk(storeId);
     const currentTime = new Date();
+    const {customerName, customerPhoneNumber, installmentAmount} = request.body;
     const plan = await store.createPlan({
-        customerName: request.body.customerName,
-        customerPhoneNumber: request.body.customerPhoneNumber,
-        installmentAmount: request.body.installmentAmount,
+        customerName,
+        customerPhoneNumber,
+        installmentAmount,
         installmentFrequency: 'monthly',
         totalInstallments: 11,
         startedAt: currentTime,
@@ -15,11 +16,11 @@ const createPlan = async (request, response) => {
       });
     const collection = await plan.createCollection({
         datetime: currentTime,
-        amount: request.body.installmentAmount,
+        amount: installmentAmount
     });
     try {
         await collection.setStore(store);
-        response.json({});
+        response.json();
     } catch (error) {
         console.error(error);
         response.sendStatus(500);

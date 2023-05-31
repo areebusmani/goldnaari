@@ -1,7 +1,7 @@
 import {Plan} from '../models/index.js';
 
 const getPlans = async (request, response) => {
-    const storeId = request.storeId;
+    const {storeId} = request;
 
     try {
         const plans = await Plan.findAndCountAll({

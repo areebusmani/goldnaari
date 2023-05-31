@@ -1,7 +1,7 @@
 import {Plan, Collection, Store} from '../models/index.js';
 
 const getStore = async (request, response) => {
-    const storeId = request.storeId;
+    const {storeId} = request;
     try {
         const store = await Store.findByPk(storeId);
         const totalPlans = await Plan.count({where: {storeId, status: 'active'}});

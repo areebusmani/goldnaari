@@ -26,10 +26,6 @@ const CreatePlan = ({ launched, onPlanCreated, onCancel }) => {
         }
     };
 
-    const handleCancel = () => {
-        onCancel();
-    }
-
     return (
         <Modal
             title="Start a new Plan"
@@ -37,7 +33,7 @@ const CreatePlan = ({ launched, onPlanCreated, onCancel }) => {
             open={launched}
             onOk={handleSubmit(createPlan)}
             confirmLoading={confirmLoading}
-            onCancel={handleCancel}
+            onCancel={onCancel}
             okText="Create Plan"
             afterClose={reset}
         >

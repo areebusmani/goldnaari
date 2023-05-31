@@ -1,6 +1,6 @@
 const submitButton = document.getElementById('submit-button');
 
-const successMessage = 'Successfully registered your account. You will be redirected to your dashboard soon'
+const successMessage = 'Successfully registered your account. You will be redirected to your dashboard soon';
 
 const errorMessage = 'Something went wrong. Please try again';
 
