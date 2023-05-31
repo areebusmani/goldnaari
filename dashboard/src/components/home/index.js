@@ -68,8 +68,11 @@ const Home = () => {
                             <Statistic title="Total Collections"
                                 value={formatCurrency(storeData.totalCollections)} precision={2} />
                         </Link>
-                        <Button className="card-action first" disabled>
-                            View pending collections (0)
+                        {/* <Button className="card-action first" type="primary">
+                            Register a collection
+                        </Button> */}
+                        <Button className="card-action secondary" disabled={!(storeData.pendingCollections > 0)}>
+                            View pending collections ({storeData.pendingCollections || 0})
                         </Button>
                     </Card>
                 </Col>

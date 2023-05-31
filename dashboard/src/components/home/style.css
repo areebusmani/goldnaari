@@ -6,6 +6,10 @@
     margin-top: 16px;
 }
 
+.card-action:not(.first) {
+    margin-top: 16px;
+}
+
 .stat-link {
     text-decoration: none !important;
 }

@@ -4,7 +4,7 @@ import { Modal, Input, Alert } from 'antd';
 import './style.css';
 import axios from 'axios';
 
-const infoText = `By creating a new plan you acknowledge that you have
+const infoText = `By starting a new plan you acknowledge that you have
     accepted the first installment amount from the customer
     and issued a receipt`;
 
@@ -34,7 +34,7 @@ const CreatePlan = ({ launched, onPlanCreated, onCancel }) => {
             onOk={handleSubmit(createPlan)}
             confirmLoading={confirmLoading}
             onCancel={onCancel}
-            okText="Create Plan"
+            okText="Start Plan"
             afterClose={reset}
         >
             <Alert message={infoText} type="info" />
