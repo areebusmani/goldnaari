@@ -1,6 +1,6 @@
 const submitButton = document.getElementById('submit-button');
 
-const successMessage = 'Successfully registered your account. Our support team will get in touch with you soon to complete the last steps'
+const successMessage = 'Successfully registered your account. You will be redirected to your dashboard soon'
 
 const errorMessage = 'Something went wrong. Please try again';
 
@@ -74,6 +74,9 @@ function submitForm() {
       } else {
          alertHandler(successMessage, 'success');
          resetForm();
+         setTimeout(() => {
+            document.getElementById('dashboard').click();
+         }, 3000);
       }
    }).catch(function () {
       requestInFlight = false;
