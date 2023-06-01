@@ -85,7 +85,7 @@ const PendingCollections = () => {
             />
             <CreateCollection
                 launched={createCollectionLaunched}
-                collection={selectedCollection}
+                collection={selectedCollection.current}
                 onCancel={onCancelCreateCollection}
                 onCollectionCreated={onCollectionCreated}
             />

@@ -9,10 +9,9 @@ const infoText = `Please confirm the details`;
 
 const CreateCollection = ({ collection, launched, onCollectionCreated, onCancel }) => {
     const [confirmLoading, setConfirmLoading] = useState(false);
-    const [selectedCollection, setSelectedCollection] = useState(collection);
 
     const createCollection = async () => {
-        const {planId} = selectedCollection.current;
+        const {planId} = collection;
         setConfirmLoading(true);
         try {
             await axios.post('/api/collections', {planId});
@@ -22,24 +21,24 @@ const CreateCollection = ({ collection, launched, onCollectionCreated, onCancel 
         }
     };
 
-    const collectionAttributes = selectedCollection.current ? [
+    const collectionAttributes = collection ? [
         {
           label: 'Customer Name',
-          value: selectedCollection.current.customerName
+          value: collection.customerName
         },
         {
           label: 'Customer Phone Number',
-          value: selectedCollection.current.customerPhoneNumber
+          value: collection.customerPhoneNumber
 
         },
         {
           label: 'Due Amount',
-          value: formatCurrency(selectedCollection.current.dueAmount)
+          value: formatCurrency(collection.dueAmount)
 
         },
         {
           label: 'Due Date',
-          value: formatDate(selectedCollection.current.dueDate)
+          value: formatDate(collection.dueDate)
         },
       ] : [];
 
@@ -54,7 +53,7 @@ const CreateCollection = ({ collection, launched, onCollectionCreated, onCancel 
             okText="Register collection"
         >
             <div className="spacer"></div>
-            {!!selectedCollection.current &&
+            {!!collection &&
                 <>
                     <Alert message={infoText} type="info" />
                     <List
