@@ -2,11 +2,7 @@
     margin-bottom: 16px;
 }
 
-.card-action.first {
-    margin-top: 16px;
-}
-
-.card-action:not(.first) {
+.card-action {
     margin-top: 16px;
 }
 
