@@ -16,4 +16,3 @@ const sequelize = new Sequelize(process.env.MYSQL_DATABASE, process.env.MYSQL_US
 })();
 
 export default sequelize;
-
