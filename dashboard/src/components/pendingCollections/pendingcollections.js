@@ -94,4 +94,3 @@ const PendingCollections = () => {
 }
 
 export default PendingCollections;
-
