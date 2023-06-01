@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Card, Col, Row, Button, Statistic, Spin } from 'antd';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { formatCurrency } from '../../utils/currency';
 import axios from 'axios';
 import CreatePlan from '../createplan';
@@ -10,6 +10,7 @@ const Home = () => {
     const [loading, setLoading] = useState(false);
     const [storeData, setStoreData] = useState();
     const [createPlanLaunched, setCreatePlanLaunched] = useState(false);
+    const navigate = useNavigate();
 
     const fetchData = async () => {
         setLoading(true);
@@ -68,9 +69,12 @@ const Home = () => {
                             <Statistic title="Total Collections"
                                 value={formatCurrency(storeData.totalCollections)} precision={2} />
                         </Link>
-
-                        <Button className="card-action secondary" disabled>
-                            View pending collections (0)
+                        <Button
+                            className="card-action secondary"
+                            disabled={!(storeData.pendingCollections > 0)}
+                            onClick={() => navigate('/pending-collections')}
+                        >
+                            View pending collections ({storeData.pendingCollections || 0})
                         </Button>
                     </Card>
                 </Col>

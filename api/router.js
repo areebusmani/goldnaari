@@ -8,6 +8,7 @@ import getCollections from './handlers/getCollections.js';
 import createStore from './handlers/createStore.js';
 import createPlan from './handlers/createPlan.js';
 import getPendingCollections from './handlers/getPendingCollections.js';
+import createCollection from './handlers/createCollection.js';
 
 const router = Router()
 
@@ -21,6 +22,7 @@ router.get('/validate-otp', validateOtp);
 
 router.post('/store', createStore);
 router.post('/plans', authenticate, createPlan);
+router.post('/collections', authenticate, createCollection);
 
 router.get('*', (request, response) => {
     response.sendStatus(404);

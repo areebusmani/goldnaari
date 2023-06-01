@@ -37,7 +37,7 @@ export const getPendingStoreCollections = async (storeId) => {
         const dueDate = new Date(startedAt);
         dueDate.setMonth(dueDate.getMonth() + Number(installmentsDone));
         return {
-            id,
+            planId: id,
             customerName,
             customerPhoneNumber,
             dueDate,

@@ -6,6 +6,11 @@
     margin-top: 16px;
 }
 
+.card-action.secondary:not(:disabled) {
+    color: #1677ff;
+    border-color: #1677ff;
+}
+
 .stat-link {
     text-decoration: none !important;
 }

@@ -4,10 +4,10 @@ const getPendingCollections = async (request, response) => {
     const {storeId} = request;
 
     try {
-        const collections = getPendingStoreCollections(storeId);
+        const collections = await getPendingStoreCollections(storeId);
         const responseData = {
             data: collections,
-            count: collections.count
+            count: collections.length
         };
         response.json(responseData);
     } catch (error) {

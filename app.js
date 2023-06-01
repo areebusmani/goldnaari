@@ -9,14 +9,14 @@ import logger from 'morgan';
 import methodOverride from 'method-override';
 import apiRouter from './api/router.js';
 import { fileURLToPath } from 'url';
-// import cors from 'cors';
+import cors from 'cors';
 // import './scripts/populatedb.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const cacheTime = 31536000; // 1 year
 const app = express();
-// app.use(cors({origin: '*'}))
+app.use(cors({origin: '*'}))
 app.set('port', process.env.PORT || 3000);
 app.use(logger('dev'));
 app.use(parser.urlencoded({ extended: false }));

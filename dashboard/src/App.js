@@ -6,6 +6,7 @@ import Home from './components/home';
 import Header from './components/header';
 import Plans from './components/plans';
 import Collections from './components/collections';
+import PendingCollections from './components/pendingCollections';
 import Login from './components/login';
 import NotFound from './components/notfound';
 import { getAuthToken, setAuthHeaders } from './utils/auth';
@@ -36,6 +37,7 @@ const App = () => {
                         <Route exact path="/" element={<Home />} />
                         <Route path="/plans" element={<Plans />} />
                         <Route path="/collections" element={<Collections />} />
+                        <Route path="/pending-collections" element={<PendingCollections />} />
                         <Route path="*" element={<NotFound />} />
                     </Routes>
                 </div>
