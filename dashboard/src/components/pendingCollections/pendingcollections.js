@@ -30,7 +30,7 @@ const PendingCollections = () => {
 
     const fetchData = async () => {
         try {
-            const response = await axios.get('/api/pendingCollections');
+            const response = await axios.get('/api/pending-collections');
             setData(response.data.data);
         } finally {
             setLoading(false);
@@ -86,6 +86,7 @@ const PendingCollections = () => {
             <CreateCollection
                 launched={createCollectionLaunched}
                 collection={selectedCollection.current}
+                planId={selectedCollection.current && selectedCollection.current.planId}
                 onCancel={onCancelCreateCollection}
                 onCollectionCreated={onCollectionCreated}
             />

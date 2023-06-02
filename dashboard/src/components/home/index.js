@@ -70,6 +70,13 @@ const Home = () => {
                                 value={formatCurrency(storeData.totalCollections)} precision={2} />
                         </Link>
                         <Button
+                            className="card-action"
+                            type="primary"
+                            onClick={() => navigate('/plans/?mode=collect')}
+                        >
+                            Collect installment
+                        </Button>
+                        <Button
                             className="card-action secondary"
                             disabled={!(storeData.pendingCollections > 0)}
                             onClick={() => navigate('/pending-collections')}
