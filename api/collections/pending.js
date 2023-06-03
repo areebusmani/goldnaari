@@ -33,15 +33,16 @@ export const getPendingStoreCollections = async (storeId) => {
         const monthsPassed = Math.floor(timeDiff / (1000 * 60 * 60 * 24 * 30));
         const installmentsExpected = Math.min(monthsPassed + 1, totalInstallments);
         const installmentsDone = Number(collectionsMap[id]);
-        const installmentsPending = Math.max(installmentsExpected - Number(installmentsDone));
+        const installmentsPending = Math.max(installmentsExpected - Number(installmentsDone), 0);
         const dueDate = new Date(startedAt);
         dueDate.setMonth(dueDate.getMonth() + Number(installmentsDone));
+        const dueAmount = installmentsPending * installmentAmount;
         return {
             planId: id,
             customerName,
             customerPhoneNumber,
             dueDate,
-            dueAmount: installmentsPending * installmentAmount
+            dueAmount
         };
     }).filter((collection) => {
         return collection.dueAmount > 0;

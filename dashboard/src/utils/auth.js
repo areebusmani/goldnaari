@@ -49,7 +49,7 @@ export const setAuthHeaders = () => {
 }
 
 export const setAuthToken = (authToken) => {
-    setCookie(AUTH_TOKEN_COOKIE_KEY, authToken);
+    setCookie(AUTH_TOKEN_COOKIE_KEY, authToken, 365);
 }
 
 export const getAuthToken = () => {

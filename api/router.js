@@ -9,13 +9,15 @@ import createStore from './handlers/createStore.js';
 import createPlan from './handlers/createPlan.js';
 import getPendingCollections from './handlers/getPendingCollections.js';
 import createCollection from './handlers/createCollection.js';
+import getUpcomingCollection from './handlers/getUpcomingCollection.js';
 
 const router = Router()
 
 router.get('/store', authenticate, getStore);
 router.get('/plans', authenticate, getPlans);
 router.get('/collections', authenticate, getCollections);
-router.get('/pendingCollections', authenticate, getPendingCollections);
+router.get('/pending-collections', authenticate, getPendingCollections);
+router.get('/plans/:planId/upcoming-collection', authenticate, getUpcomingCollection);
 
 router.get('/generate-otp', generateOtp);
 router.get('/validate-otp', validateOtp);
